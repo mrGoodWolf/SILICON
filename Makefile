@@ -77,7 +77,7 @@ default: Makefile
 # make a disk with minix v1 file system
 fs: $(UPROGS)
 	$(DEL) bin/rootfs.img
-	bximage bin/rootfs.img -hd=10M -imgmode=flat -mode=create -q
+	bximage bin/rootfs.img -hd=10M -imgmode=flat -q
 	mkfs.minix bin/rootfs.img -1 -n14
 	sudo mount -o loop -t minix bin/rootfs.img $(ROOTFS)
 	cp usr/README $(ROOTFS) 
@@ -93,9 +93,12 @@ fsck:
 	fsck.minix -fsl ./bin/rootfs.img
 
 # default run with bochs
-run: qemu
+run:
+	$(DBG) -q -f script/bochsrc.bxrc -rc script/bochsinit
 
 # debug with Bochs X GUI
+bochs:
+	$(BOCHS) -q -f script/dbg_bochsrc.bxrc -log lst/bochsdbgout.log
 
 # debug with qemu and gdb
 qemu: 
