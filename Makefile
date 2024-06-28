@@ -93,12 +93,9 @@ fsck:
 	fsck.minix -fsl ./bin/rootfs.img
 
 # default run with bochs
-run:
-	$(DBG) -q -f script/bochsrc.bxrc -rc script/bochsinit
+run: qemu
 
 # debug with Bochs X GUI
-bochs:
-	$(BOCHS) -q -f script/dbg_bochsrc.bxrc -log lst/bochsdbgout.log
 
 # debug with qemu and gdb
 qemu: 
