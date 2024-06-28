@@ -33,17 +33,15 @@ static void print_ok(){
     }
 
     putchar('[');
-    vga_setcolor(COL_L_RED, COL_L_BLACK);
+    vga_setcolor(COL_L_GREEN, COL_BLACK);
     puts("OK");
-    vga_setcolor(COL_L_WHITE, COL_L_BLUE);
+    vga_setcolor(COL_L_WHITE, COL_BLUE);
     putchar(']');
 }
 
 int osmain(void)
 {
     vga_init();
-
-    vga_setcolor(COL_L_WHITE, COL_L_BLUE);
 
     puts("installing GDT...     ");
     gdt_init();
