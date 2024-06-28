@@ -20,7 +20,7 @@ Platform: Linux
 
 ```shell
 git clone https://https://github.com/mrGoodWolf/SILICON.git
-cd OS67
+cd SILICON
 make init   # only for first time
 make fs     # build root file system and user routines, root privilege required
 make        # build kernel
