@@ -19,7 +19,7 @@ Platform: Linux
 ### How to compile
 
 ```shell
-git clone https://github.com/SilverRainZ/OS67.git
+git clone https://https://github.com/mrGoodWolf/SILICON.git
 cd OS67
 make init   # only for first time
 make fs     # build root file system and user routines, root privilege required
