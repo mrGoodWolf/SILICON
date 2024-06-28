@@ -1,3 +1,30 @@
+// #define __LOG_ON 1
+// std
+#include <type.h>
+#include <asm.h>
+#include <dbg.h>
+// x86
+#include <pm.h>
+#include <isr.h>
+#include <timer.h>
+#include <syscall.h>
+// libs
+#include <printk.h>
+// drv
+#include <vga.h>
+#include <kb.h>
+#include <ide.h>
+// mm
+#include <pmm.h>
+#include <vmm.h>
+// proc
+#include <proc.h>
+// fs
+#include <bcache.h>
+#include <inode.h>
+// dev
+#include <dev.h>
+
 #include <usys.h>
 #include <uio.h>
 #include <string.h>
