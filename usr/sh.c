@@ -1,30 +1,3 @@
-// #define __LOG_ON 1
-// std
-#include <type.h>
-#include <asm.h>
-#include <dbg.h>
-// x86
-#include <pm.h>
-#include <isr.h>
-#include <timer.h>
-#include <syscall.h>
-// libs
-#include <printk.h>
-// drv
-#include <vga.h>
-#include <kb.h>
-#include <ide.h>
-// mm
-#include <pmm.h>
-#include <vmm.h>
-// proc
-#include <proc.h>
-// fs
-#include <bcache.h>
-#include <inode.h>
-// dev
-#include <dev.h>
-
 #include <usys.h>
 #include <uio.h>
 #include <string.h>
@@ -222,19 +195,36 @@ bad:
 static void welcome(){
     struct stat st;
     int fd;
-    char logo[150] = "";
-
-    if ((fd = _open("/share/logo.txt", O_RONLY)) < 0){
-        puts("Fail to open /logo.txt\n");
-        goto bad;
-    }
-    if (_fstat(fd, &st) < 0){
-        puts("Fail to getstat of /logo.txt\n");
-    }
-    if (_read(fd, logo, st.size) < 0){
-        puts("Fail to read /logo.txt\n");
-        goto bad;
-    }
+    char logo[150] = " ________  ________           ________  ________                                                                                   /n
+|\   __  \|\   ____\         |\_____  \|\   __  \                                                                                  /n
+\ \  \|\  \ \  \___|_         \|___/  /\ \  \|\  \                                                                                 /n
+ \ \  \\\  \ \_____  \            /  / /\ \  \\\  \                                                                                /n
+  \ \  \\\  \|____|\  \          /  / /  \ \  \\\  \                                                                               /n
+   \ \_______\____\_\  \        /__/ /    \ \_______\                                                                              /n
+    \|_______|\_________\       |__|/      \|_______|                                                                              /n
+             \|_________|                                                                                                          /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n
+ ___      ___ _______   ________        _____    _____       _______          ________  ___       ________  ___  ___  ________     /n
+|\  \    /  /|\  ___ \ |\   __  \  ___ / __  \  / __  \     /  ___  \        |\   __  \|\  \     |\   __  \|\  \|\  \|\   __  \    /n
+\ \  \  /  / | \   __/|\ \  \|\  \|\__\\/_|\  \|\/_|\  \   /__/|_/  /|       \ \  \|\  \ \  \    \ \  \|\  \ \  \\\  \ \  \|\  \   /n
+ \ \  \/  / / \ \  \_|/_\ \   _  _\|__\|/ \ \  \|/ \ \  \  |__|//  / /        \ \   __  \ \  \    \ \   ____\ \   __  \ \   __  \  /n
+  \ \    / /   \ \  \_|\ \ \  \\  \|  ___  \ \  \ __\ \  \ ___ /  /_/__        \ \  \ \  \ \  \____\ \  \___|\ \  \ \  \ \  \ \  \ /n
+   \ \__/ /     \ \_______\ \__\\ _\ |\__\  \ \__\\__\ \__\\__\\________\       \ \__\ \__\ \_______\ \__\    \ \__\ \__\ \__\ \__\/n
+    \|__|/       \|_______|\|__|\|__|\|__|   \|__\|__|\|__\|__|\|_______|        \|__|\|__|\|_______|\|__|     \|__|\|__|\|__|\|__|/n
+                                                                                                                                   /n
+                                                                                                                                   /n
+                                                                                                                                   /n";
     puts(logo);
 
 bad:
